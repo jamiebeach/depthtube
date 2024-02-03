@@ -8,17 +8,18 @@ import {
 import videos from './mockData'; // Assuming this is your mock data file
 import Video from './video';
 import VideoRenderer from './VideoRenderer'; // Your new component for Three.js rendering
+import './App.css'
 
 function App() {
   return (
     <Router>
       <div>
         <header className="App-header">
-          <h1>DepthTube</h1>
+          <h1><a href='/'>DepthTube</a></h1>
         </header>
         <Routes>
-          <Route path="/video/:id" children={<VideoRenderer />} />
-          <Route path="/" exact>
+          <Route path="/video/:id" element={<VideoRenderer />} />
+          <Route path="/" element={
             <div className="video-container">
               {videos.map(video => (
                 // Update this to Link to your video renderer
@@ -27,7 +28,7 @@ function App() {
                 </Link>
               ))}
             </div>
-          </Route>
+          } />
         </Routes>
       </div>
     </Router>
